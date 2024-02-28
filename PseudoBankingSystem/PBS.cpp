@@ -18,8 +18,20 @@ int main() {
 	// DISPLAY MENU AND OBTAIN USER CHOICE
 	displayMenu(choice);
 	
-
-
+	// SWITCH STATEMENT TO SELECT APPROPRIATE FUNCTION
+	switch (choice) {
+		case ACC_SUMMARY_CHOICE:
+			accountSummary();
+			break;
+		case DEPOSIT_CHOICE:
+			depositAccount();
+			break;
+		case WITHDRAW_CHOICE:
+			withdrawAccount();
+			break;
+		case QUIT_CHOICE:
+			cout << "\nThank you for choosing Online Banking!\n\n";
+	}
 
 	return 0;
 }

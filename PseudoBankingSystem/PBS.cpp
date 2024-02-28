@@ -1,10 +1,12 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 void displayMenu(int&);
 void accountSummary();
 void depositAccount();
 void withdrawAccount();
+void idValidation(string&);
 
 
 int main() {
@@ -14,12 +16,13 @@ int main() {
 			  WITHDRAW_CHOICE = 3,
 			  QUIT_CHOICE = 4;
 	int choice;
-	 
-	// DISPLAY MENU AND OBTAIN USER CHOICE
-	displayMenu(choice);
 	
-	// SWITCH STATEMENT TO SELECT APPROPRIATE FUNCTION
-	switch (choice) {
+	do {
+		// DISPLAY MENU AND OBTAIN USER CHOICE
+		displayMenu(choice);
+
+		// SWITCH STATEMENT TO SELECT APPROPRIATE FUNCTION
+		switch (choice) {
 		case ACC_SUMMARY_CHOICE:
 			accountSummary();
 			break;
@@ -31,7 +34,8 @@ int main() {
 			break;
 		case QUIT_CHOICE:
 			cout << "\nThank you for choosing Online Banking!\n\n";
-	}
+		}
+	} while (choice != QUIT_CHOICE);
 
 	return 0;
 }
@@ -56,7 +60,13 @@ void displayMenu(int& choice) {
 }
 
 void accountSummary(){
+	string idNum;
 
+	cout << "Enter your 3 digit ID Number: ";
+	cin >> idNum;
+
+	idValidation(idNum);
+	
 }
 
 void depositAccount() {
@@ -65,4 +75,12 @@ void depositAccount() {
 
 void withdrawAccount() {
 
+}
+
+void idValidation(string &idNum) {
+	while (idNum.length() != 3 && stoi(idNum) < 0 && stoi(idNum) > 999) {
+		cout << "\nError. ID number must be a three digit number."
+			<< "\nEnter your 3 digit ID Number: ";
+		cin >> idNum;
+	}
 }

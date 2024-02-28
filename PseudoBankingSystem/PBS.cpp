@@ -2,6 +2,9 @@
 using namespace std;
 
 void displayMenu(int&);
+void accountSummary();
+void depositAccount();
+void withdrawAccount();
 
 
 int main() {
@@ -14,26 +17,40 @@ int main() {
 	 
 	// DISPLAY MENU AND OBTAIN USER CHOICE
 	displayMenu(choice);
-	cout << "in main" << choice;
+	
+
+
 
 	return 0;
 }
 
-void displayMenu(int &choice) {
-	cout << "\n\tOnline Banking Menu\n"
-		 << "--------------------------\n"
-		 << "1. Display Account Summary\n"
-		 << "2. Deposit into Account\n"
-		 << "3. Withdraw from Account\n"
-		 << "4. Quit the Program\n\n"
-		 << "Enter your choice: ";
+void displayMenu(int& choice) {
+	cout << "\n   Online Banking Menu\n"
+		<< "--------------------------\n"
+		<< "1. Display Account Summary\n"
+		<< "2. Deposit into Account\n"
+		<< "3. Withdraw from Account\n"
+		<< "4. Quit the Program\n\n"
+		<< "Enter your choice: ";
 
 	cin >> choice;
 
 	while (choice < 0 || choice > 4) {
 		cout << "\nChoice must be between 1-4. Please try again.\n"
-			 << "Enter your choice: ";
+			<< "Enter your choice: ";
 
 		cin >> choice;
 	}
+}
+
+void accountSummary(){
+
+}
+
+void depositAccount() {
+
+}
+
+void withdrawAccount() {
+
 }

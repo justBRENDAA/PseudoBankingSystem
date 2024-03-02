@@ -46,6 +46,7 @@ int main() {
 	return 0;
 }
 
+// function to display menu and get user choice
 void displayMenu(int& choice) {
 	cout << "\n   Online Banking Menu\n"
 		<< "--------------------------\n"
@@ -65,6 +66,7 @@ void displayMenu(int& choice) {
 	}
 }
 
+// account summary choice
 void accountSummary(){
 	string idNumSTR;
 	
@@ -82,6 +84,7 @@ void accountSummary(){
 
 }
 
+// deposit account choice
 void depositAccount() {
 	string idNumSTR, date;
 	float deposit;
@@ -123,6 +126,7 @@ void depositAccount() {
 	}
 }
 
+// withdraw account choice
 void withdrawAccount() {
 	string idNumSTR, date;
 	float balance = 0, withdrawal = 0, w_amount;
@@ -169,6 +173,7 @@ void withdrawAccount() {
 	}
 }
 
+// validate id is 3 digits
 void idValidation(string &idNumSTR) {
 	int idLength;
 
@@ -184,6 +189,7 @@ void idValidation(string &idNumSTR) {
 	} while (idLength != 3);
 }
 
+// display account info
 void displayAccountInfo(string fileName) {
 	string custName, date;
 	float balance = 0, money;
@@ -222,6 +228,7 @@ void displayAccountInfo(string fileName) {
 	cin.get( );
 }
 
+// get acc balance
 void getBalance(string fileName, float& balance) {
 	string trash;
 	float money;

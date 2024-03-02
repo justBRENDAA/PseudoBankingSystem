@@ -124,44 +124,46 @@ void depositAccount() {
 
 void withdrawAccount() {
 	string idNumSTR, date;
-	float balance = 0, withdrawal;
+	float balance = 0, withdrawal = 0, w_amount;
 
-	cout << "\n\n         ACCOUNT WITHDRAWAL\n"
+	cout << "\n\n         ACCOUNT WITHDRAWAL\n"            // menu header
 		<< "----------------------------------\n";
 
-	cout << "Enter your 3 digit ID Number: ";
+	cout << "Enter your 3 digit ID Number: ";             // get id
 	cin >> idNumSTR;
 	
-	idValidation(idNumSTR);
+	idValidation(idNumSTR);                               // validate id
 
-	string fileName = "Cust_" + idNumSTR + ".dat";
+	string fileName = "Cust_" + idNumSTR + ".dat";        // create file name
 
-	getBalance(fileName, balance);
+	getBalance(fileName, balance);                        // get balance
 
 
-	cout << "Enter today's date (MM/DD/YY): ";
+	cout << "Enter today's date (MM/DD/YY): ";           // withdrawal date
 	cin >> date;
 
-	cout << "Enter withdrawal amount: ";
-	cin >> withdrawal;
+	cout << "Enter withdrawal amount: ";                 // positive withdrawal amount
+	cin >> w_amount;
 
-	if (withdrawal >= balance)
+	withdrawal -= w_amount;                              // negative withdrawal amount
+
+	if (w_amount >= balance){
 		cout << "Error: Withdrawal amount must be less than account balance.";
-
+		cout << "\nPress any key to return to the menu.\n\n";    // pause program 
+		cin.ignore();
+		cin.get();
+	}
 	else {
 		fstream dataFile;
 		dataFile.open(fileName, ios::app);        // file in append mode 
+		
+		dataFile << date << "\t" << withdrawal << endl;
+		dataFile.close();
 
-		if (dataFile) {
-			dataFile << date << "\t" << deposit << endl;  // writes date and deposit amount with tab as separator ** if cursor is not on a newline in file it will cause error
-			cout << "\n\tDeposit Successful.\n";
-			dataFile.close();
+		cout << "\n\tWithdrawal Successful.\n";
+
+		displayAccountInfo(dataFile);
 	}
-
-
-	
-
-
 }
 
 void idValidation(string &idNumSTR) {

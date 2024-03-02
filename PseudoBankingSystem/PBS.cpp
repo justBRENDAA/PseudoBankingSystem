@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
+
 using namespace std;
 
 void displayMenu(int&);
@@ -64,8 +66,8 @@ void displayMenu(int& choice) {
 void accountSummary(){
 	string idNumSTR;
 	
-	cout << "\n\n   ACCOUNT SUMMARY\n"
-		 << "---------------------\n";
+	cout << "\n\n         ACCOUNT SUMMARY\n"
+		 << "----------------------------------\n";
 
 	cout << "Enter your 3 digit ID Number: ";
 	cin >> idNumSTR;
@@ -120,25 +122,29 @@ void displayAccountInfo(string fileName) {
 	if (inFile){
 		getline(inFile, custName); // get first line of file containing customer name
 
-		cout << "\nWelcome " << custName << endl << endl; // displays name
+		cout << "\n  Account Holder: " << custName << endl << endl; // displays name
 
+		cout << "\tAccount Activity\n"
+			 << "\t-----------------\n";
 		while (inFile >> date) // gets the date
 		{
-			cout << date << "   "; // displays date
+			cout << "\t" << date << "   "; // displays date
 			inFile >> money; // gets the money ammount
-			cout << money << endl; // displays money transaction
+			cout << setw(5) << money << endl; // displays money transaction
 			balance += money; // adds or subtracts to balance
 
 		}
 
-		cout << "Your account balance is: $" << balance << endl << endl;
+		cout << "\n  Your account balance is: $" << balance << endl << endl;
 
 		inFile.close();
 		
 	}
 
 	else
-		cout << "Error: The provided ID number is not in our system." << endl << endl;
+		cout << "\nError: The ID number provided does not match any accounts in our system." << endl << endl;
 
-	system("pause");
+	cout << "\nPress any key to return to the menu.\n\n";
+	cin.ignore();
+	cin.get( );
 }

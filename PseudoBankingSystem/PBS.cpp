@@ -1,3 +1,37 @@
+/*
+Homework: 2
+Team:3
+Team Members:
+	- Brenda Luis: 33% Contribution
+	- Hector Romero: 33% Contribution
+	- Dante Rodriguez: 33% contribution
+
+Submission Date: 01/23/2024
+1.	DISPLAY THE ACCOUNT SUMMARY: This option allows the user to enter a 3-digit customer ID
+	(e.g., 007 for the customer name James Bond). The program should read-in an appropriate dat
+	file (e.g., Cust_007.txt) corresponding to the customer ID and display the account information,
+	including the total account balance on the console. [10 points]
+
+2.	DEPOSIT THE AMOUNT INTO THE ACCOUNT: This option allows the user to enter a 3-digit customer ID,
+	add the requested amount at the end of the file, and save the file. The option should display
+	the account information on the console, including the total account balance. [20 points]
+
+3.	WITHDRAW THE AMOUNT FROM THE ACCOUNT: This option allows the user to enter a 3-digit customer ID,
+	read the customer’s dat file, verify that the requested withdrawal is less than the account balance,
+	and then add the withdrawal amount at the end of the file. The option should display the account
+	information on the console, including the total account balance.
+
+In case if the requested withdrawal exceeds the account balance, the program should display an error message
+and terminate the transaction. [25 points]
+
+4.	Quit the program: This option terminates the program. [5 points]
+Four test files are provided to test your program. The dat files are named based on the customer id. For instance, the bank’s first customer is the book’s author, Tony Gaddis, and his customer ID is Cust_001. The dat file of his checking account is Cust_001.dat.
+Input validations: The menu-based option should not allow any options other than 1 to 4 [10 points]. The program should not allow users to enter negative numbers [10 points]. As long as the user does not enter the correct values, the program should not move forward and keep asking the user to enter the correct values.
+
+
+*/
+
+
 #include <iostream>
 #include <string>
 #include <fstream>

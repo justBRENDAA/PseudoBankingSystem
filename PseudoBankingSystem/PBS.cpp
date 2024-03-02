@@ -75,17 +75,44 @@ void accountSummary(){
 	idValidation(idNumSTR);
 	
 	string fileName = "Cust_" + idNumSTR + ".dat";
+
 	displayAccountInfo(fileName);
 
 }
 
 void depositAccount() {
-	string idNumSTR;
+	string idNumSTR, date;
+	float deposit;
+
+	cout << "\n\n         ACCOUNT DEPOSIT\n"
+		<< "----------------------------------\n";
 
 	cout << "Enter your 3 digit ID Number: ";
 	cin >> idNumSTR;
 
 	idValidation(idNumSTR);
+
+	string fileName = "Cust_" + idNumSTR + ".dat";   // file name
+
+	cout << "Enter today's date (MM/DD/YY): ";
+	cin >> date;
+
+	cout << "Enter deposit amount: ";
+	cin >> deposit;
+
+	fstream dataFile;
+	dataFile.open(fileName, ios::app);        // file in append mode 
+
+	if (dataFile) {
+		dataFile << date << "\t" << deposit;  // writes date and deposit amount with tab as separator ** if cursor is not on a newline in file it will cause error
+		cout << "\n\tDeposit Successful.\n";
+		dataFile.close();
+
+
+		cout << "\n\n         ACCOUNT SUMMARY\n"
+			<< "----------------------------------\n";
+		displayAccountInfo(fileName);        // display account summary 
+	}
 }
 
 void withdrawAccount() {
@@ -130,11 +157,12 @@ void displayAccountInfo(string fileName) {
 		{
 			cout << "\t" << date << "   ";    // display date
 			inFile >> money;                  // read in money amount
-			cout << setw(5) << money << endl; // displays money activity 
+			cout << setw(7) << fixed << setprecision(2) << money << endl; // displays money activity 
 			balance += money;                 // updates balance
 
 		}
 
+		cout << fixed << setprecision(2);
 		cout << "\n  Your account balance is: $" << balance << endl << endl; // display balance
 
 		inFile.close(); // close file 

@@ -100,11 +100,17 @@ void depositAccount() {
 	cout << "Enter deposit amount: ";
 	cin >> deposit;
 
+	while (deposit <= 0) {
+		cout << "\nError: Deposit amount must be greater than $0.\n"
+			<< "Enter deposit amount: ";
+		cin >> deposit;
+	}
+
 	fstream dataFile;
 	dataFile.open(fileName, ios::app);        // file in append mode 
 
 	if (dataFile) {
-		dataFile << date << "\t" << deposit;  // writes date and deposit amount with tab as separator ** if cursor is not on a newline in file it will cause error
+		dataFile << date << "\t" << deposit << endl;  // writes date and deposit amount with tab as separator ** if cursor is not on a newline in file it will cause error
 		cout << "\n\tDeposit Successful.\n";
 		dataFile.close();
 

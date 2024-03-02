@@ -61,7 +61,7 @@ void displayMenu(int& choice) {
 
 void accountSummary(){
 	string idNumSTR;
-
+	
 	cout << "Enter your 3 digit ID Number: ";
 	cin >> idNumSTR;
 
@@ -70,24 +70,32 @@ void accountSummary(){
 }
 
 void depositAccount() {
-
-}
-
-void withdrawAccount() {
-
-}
-
-void idValidation(string &idNumSTR) {
+	cout << "you are in deposti to account\n";
+	
 	string idNumSTR;
-	int idLength;
-	//int idNum;
 
 	cout << "Enter your 3 digit ID Number: ";
 	cin >> idNumSTR;
 
+	idValidation(idNumSTR);
+}
+
+void withdrawAccount() {
+	cout << "you are in withdraw account\n";
+
+	string idNumSTR;
+
+	cout << "Enter your 3 digit ID Number: ";
+	cin >> idNumSTR;
+
+	idValidation(idNumSTR);
+}
+
+void idValidation(string &idNumSTR) {
+	int idLength;
+
 	do {
 		idLength = idNumSTR.length();
-		//idNum = stoi(idNumSTR);
 
 		if (idLength != 3) {
 			cout << "\nError. ID number must be a three digit number."

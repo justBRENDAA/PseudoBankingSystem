@@ -5,13 +5,13 @@
 
 using namespace std;
 
-void displayMenu(int&);
-void accountSummary();
-void depositAccount();
-void withdrawAccount();
-void idValidation(string&);
-void displayAccountInfo(string);
-void getBalance(string, float&);
+void displayMenu(int&);             // display menu
+void accountSummary();              // account summary choice
+void depositAccount();              // deposit choice
+void withdrawAccount();             // withdraw choice
+void idValidation(string&);         // validate id
+void displayAccountInfo(string);    // read from file and display summary
+void getBalance(string, float&);    // read from file and get balance
 
 
 int main() {
@@ -38,7 +38,8 @@ int main() {
 			withdrawAccount();
 			break;
 		case QUIT_CHOICE:
-			cout << "\nThank you for choosing Online Banking!\n\n";
+			cout << "\n\nThank you for choosing Online Banking!\n\n";
+			break;
 		}
 	} while (choice != QUIT_CHOICE);
 
@@ -162,6 +163,8 @@ void withdrawAccount() {
 
 		cout << "\n\tWithdrawal Successful.\n\n";
 
+		cout << "\n\n         ACCOUNT SUMMARY\n"
+			<< "----------------------------------\n";
 		displayAccountInfo(fileName);
 	}
 }

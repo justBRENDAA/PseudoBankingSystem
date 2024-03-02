@@ -11,7 +11,7 @@ void depositAccount();
 void withdrawAccount();
 void idValidation(string&);
 void displayAccountInfo(string);
-void getBalance(string, int&);
+void getBalance(string, float&);
 
 
 int main() {
@@ -123,8 +123,8 @@ void depositAccount() {
 }
 
 void withdrawAccount() {
-	string idNumSTR;
-	float balance = 0;
+	string idNumSTR, date;
+	float balance = 0, withdrawal;
 
 	cout << "\n\n         ACCOUNT WITHDRAWAL\n"
 		<< "----------------------------------\n";
@@ -135,6 +135,19 @@ void withdrawAccount() {
 	idValidation(idNumSTR);
 
 	string fileName = "Cust_" + idNumSTR + ".dat";
+
+	getBalance(fileName, balance);
+
+
+	cout << "Enter today's date (MM/DD/YY): ";
+	cin >> date;
+
+	cout << "Enter withdrawal amount: ";
+	cin >> withdrawal;
+
+
+
+	
 
 
 }
@@ -192,6 +205,27 @@ void displayAccountInfo(string fileName) {
 	cin.get( );
 }
 
-void getBalance(string fileName, int& balance) {
+void getBalance(string fileName, float& balance) {
+	string trash;
+	float money;
 
+	ifstream inFile;
+	inFile.open(fileName);
+
+	if (inFile) {
+		getline(inFile, trash); // read name and store in junk variable
+
+		while (inFile >> trash) // read date and store in junk variable
+		{
+			inFile >> money;    // read in money amount
+			balance += money;   // update balance
+
+		}
+
+		cout << fixed << setprecision(2);
+		cout << "\n  Your account balance is: $" << balance << endl << endl; // display balance
+
+		inFile.close(); // close file 
+
+	}
 }

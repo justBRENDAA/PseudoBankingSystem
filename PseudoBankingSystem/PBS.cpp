@@ -148,7 +148,7 @@ void withdrawAccount() {
 	withdrawal -= w_amount;                              // negative withdrawal amount
 
 	if (w_amount >= balance){
-		cout << "Error: Withdrawal amount must be less than account balance.";
+		cout << "\n\nError: Withdrawal amount must be less than account balance.";
 		cout << "\nPress any key to return to the menu.\n\n";    // pause program 
 		cin.ignore();
 		cin.get();
@@ -160,9 +160,9 @@ void withdrawAccount() {
 		dataFile << date << "\t" << withdrawal << endl;
 		dataFile.close();
 
-		cout << "\n\tWithdrawal Successful.\n";
+		cout << "\n\tWithdrawal Successful.\n\n";
 
-		displayAccountInfo(dataFile);
+		displayAccountInfo(fileName);
 	}
 }
 
@@ -237,7 +237,7 @@ void getBalance(string fileName, float& balance) {
 		}
 
 		cout << fixed << setprecision(2);
-		cout << "\n  Your account balance is: $" << balance << endl << endl; // display balance
+		cout << "\nYour account balance is: $" << balance << endl << endl; // display balance
 
 		inFile.close(); // close file 
 

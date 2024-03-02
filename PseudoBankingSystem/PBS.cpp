@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 void displayMenu(int&);
@@ -7,6 +8,7 @@ void accountSummary();
 void depositAccount();
 void withdrawAccount();
 void idValidation(string&);
+void displayAccountInfo(string);
 
 
 int main() {
@@ -62,16 +64,20 @@ void displayMenu(int& choice) {
 void accountSummary(){
 	string idNumSTR;
 	
+	cout << "\n\n   ACCOUNT SUMMARY\n"
+		 << "---------------------\n";
+
 	cout << "Enter your 3 digit ID Number: ";
 	cin >> idNumSTR;
 
 	idValidation(idNumSTR);
 	
+	string fileName = "Cust_" + idNumSTR + ".dat";
+	displayAccountInfo(fileName);
+
 }
 
 void depositAccount() {
-	cout << "you are in deposti to account\n";
-	
 	string idNumSTR;
 
 	cout << "Enter your 3 digit ID Number: ";
@@ -81,8 +87,6 @@ void depositAccount() {
 }
 
 void withdrawAccount() {
-	cout << "you are in withdraw account\n";
-
 	string idNumSTR;
 
 	cout << "Enter your 3 digit ID Number: ";
@@ -104,4 +108,37 @@ void idValidation(string &idNumSTR) {
 		}
 
 	} while (idLength != 3);
+}
+
+void displayAccountInfo(string fileName) {
+	string custName, date;
+	float balance = 0, money;
+	
+	ifstream inFile;
+	inFile.open(fileName);
+
+	if (inFile){
+		getline(inFile, custName); // get first line of file containing customer name
+
+		cout << "\nWelcome " << custName << endl << endl; // displays name
+
+		while (inFile >> date) // gets the date
+		{
+			cout << date << "   "; // displays date
+			inFile >> money; // gets the money ammount
+			cout << money << endl; // displays money transaction
+			balance += money; // adds or subtracts to balance
+
+		}
+
+		cout << "Your account balance is: $" << balance << endl << endl;
+
+		inFile.close();
+		
+	}
+
+	else
+		cout << "Error: The provided ID number is not in our system." << endl << endl;
+
+	system("pause");
 }

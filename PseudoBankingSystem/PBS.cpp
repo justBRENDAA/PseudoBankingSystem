@@ -11,6 +11,7 @@ void depositAccount();
 void withdrawAccount();
 void idValidation(string&);
 void displayAccountInfo(string);
+void getBalance(string, int&);
 
 
 int main() {
@@ -123,11 +124,19 @@ void depositAccount() {
 
 void withdrawAccount() {
 	string idNumSTR;
+	float balance = 0;
+
+	cout << "\n\n         ACCOUNT WITHDRAWAL\n"
+		<< "----------------------------------\n";
 
 	cout << "Enter your 3 digit ID Number: ";
 	cin >> idNumSTR;
-
+	
 	idValidation(idNumSTR);
+
+	string fileName = "Cust_" + idNumSTR + ".dat";
+
+
 }
 
 void idValidation(string &idNumSTR) {
@@ -181,4 +190,8 @@ void displayAccountInfo(string fileName) {
 	cout << "\nPress any key to return to the menu.\n\n";    // pause program 
 	cin.ignore();
 	cin.get( );
+}
+
+void getBalance(string fileName, int& balance) {
+
 }

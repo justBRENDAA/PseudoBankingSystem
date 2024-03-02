@@ -120,31 +120,31 @@ void displayAccountInfo(string fileName) {
 	inFile.open(fileName);
 
 	if (inFile){
-		getline(inFile, custName); // get first line of file containing customer name
+		getline(inFile, custName); // gets entire first line with cust name
 
-		cout << "\n  Account Holder: " << custName << endl << endl; // displays name
+		cout << "\n  Account Holder: " << custName << endl << endl; // display cust name
 
 		cout << "\tAccount Activity\n"
 			 << "\t-----------------\n";
 		while (inFile >> date) // gets the date
 		{
-			cout << "\t" << date << "   "; // displays date
-			inFile >> money; // gets the money ammount
-			cout << setw(5) << money << endl; // displays money transaction
-			balance += money; // adds or subtracts to balance
+			cout << "\t" << date << "   ";    // display date
+			inFile >> money;                  // read in money amount
+			cout << setw(5) << money << endl; // displays money activity 
+			balance += money;                 // updates balance
 
 		}
 
-		cout << "\n  Your account balance is: $" << balance << endl << endl;
+		cout << "\n  Your account balance is: $" << balance << endl << endl; // display balance
 
-		inFile.close();
+		inFile.close(); // close file 
 		
 	}
 
 	else
-		cout << "\nError: The ID number provided does not match any accounts in our system." << endl << endl;
+		cout << "\nError: The ID number provided does not match any accounts in our system." << endl << endl;  // file not found with id num
 
-	cout << "\nPress any key to return to the menu.\n\n";
+	cout << "\nPress any key to return to the menu.\n\n";    // pause program 
 	cin.ignore();
 	cin.get( );
 }
